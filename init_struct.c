@@ -6,12 +6,30 @@
 /*   By: hqannouc <hqannouc@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 22:32:11 by hqannouc          #+#    #+#             */
-/*   Updated: 2025/08/15 03:55:28 by hqannouc         ###   ########.fr       */
+/*   Updated: 2025/08/15 16:59:23 by hqannouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+long long	get_time_ms(void)
+{
+	struct timeval	tv;
+	long long		timestamp;
+
+	timestamp = 0;
+	if (gettimeofday(&tv, NULL) == 0)
+	{
+		timestamp = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	}
+	return (timestamp);
+}
+
+long long	get_time_now(t_data *data)
+{
+	return (get_time_ms() - data->start_time);
+}
+±
 int	ft_atoi(char *nptr)
 {
 	char	*ptr;
